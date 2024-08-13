@@ -1,0 +1,18 @@
+package com.mycompany.java.ptit;
+
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        long sum = 0;
+        long a = 1;
+        for(int i = 1; i <= n; i++) {
+            a *= i;
+            sum += a; 
+        }
+        System.out.println(sum);
+    }
+}
