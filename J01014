@@ -1,0 +1,23 @@
+package com.mycompany.java.ptit;
+
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        for(int i = 0; i < t; i++) {
+            long n = sc.nextLong();
+            long s = 0;
+            for(int j = 2; j <= Math.sqrt(n); j++) {
+                while(n % j == 0) {
+                    s = j;
+                    n /= j;
+                }
+            }
+            if(n > 1) s = n;
+            System.out.println(s);
+        }
+    }
+}
