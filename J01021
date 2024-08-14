@@ -1,0 +1,28 @@
+package com.mycompany.java.ptit;
+
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    public static long x = 1000000007;
+    public static long power(long a, long b) {
+        if (b == 0) {
+            return 1;
+        }
+        long half = power(a, b / 2);
+        if (b % 2 == 0) {
+            return ((half % x) * (half % x)) % x;
+        } else {
+            return ((((half % x) * (half % x)) % x) * a) % x; 
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        while(true){
+            long a = sc.nextLong(), b = sc.nextLong();
+            if(a == 0 && b == 0) {
+                break;
+            }
+            System.out.println(power(a, b));
+        }
+    }
+}
