@@ -1,0 +1,29 @@
+package com.mycompany.java.ptit;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class JAVAPTIT {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(), m = sc.nextInt();
+        int[] a = new int[n];
+        int[] b = new int[m];
+        boolean[] m1 = new boolean[1001];
+        boolean[] m2 = new boolean[1001];
+        for(int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+            m1[a[i]] = true;
+        }
+        for(int i = 0; i < m; i++) {
+            b[i] = sc.nextInt();
+            m2[b[i]] = true;
+        }
+        for(int i = 0; i <= 1000; i++) {
+            if(m1[i] && m2[i]) {
+                System.out.print(i + " ");
+            }
+        }
+    }
+}
