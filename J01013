@@ -1,0 +1,44 @@
+package com.mycompany.java.ptit;
+
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    public static final int MAX = 2000000;
+    public static int[] p = new int[MAX + 1];
+    
+    public static void sieve() {
+        for (int i = 2; i <= MAX; i++) {
+            p[i] = i;
+        }
+        for (int i = 2; i * i <= MAX; i++) {
+            if(p[i] == i) {
+                for (int j = i * i; j <= MAX; j += i) {
+                    if(p[j] == j) {
+                        p[j] = i;
+                    }
+                }
+            }
+        }
+    }
+    
+    public static long solve(int n) {
+        long sum = 0;
+        while (n != 1) {
+            sum += p[n];
+            n /= p[n];
+        }
+        return sum;
+    }
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        sieve();
+        long totalSum = 0;
+        for(int i = 0; i < t; i++) {
+            int n = sc.nextInt();
+            totalSum += solve(n);
+        }
+        System.out.println(totalSum);
+    }
+}
