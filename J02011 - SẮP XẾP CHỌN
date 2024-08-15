@@ -1,0 +1,35 @@
+package com.mycompany.java.ptit;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    public static void solve(int[] a, int n){
+        int min_index = 0;
+        for(int i = 0; i < n - 1; i++) {
+            min_index = i;
+            System.out.print("Buoc " + (i + 1) + ": ");
+            for(int j = i + 1; j < n; j++) {
+                if(a[j] < a[min_index]){
+                    min_index = j;
+                }
+            }
+            int tmp = a[min_index];
+            a[min_index] = a[i];
+            a[i] = tmp;
+            for(int x : a){
+                System.out.print(x + " ");
+            }
+            System.out.println("");
+        }
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] a = new int[n];
+        for(int i = 0; i < n; i++){
+            a[i] = sc.nextInt();
+        }
+        solve(a, n);
+    }
+}
