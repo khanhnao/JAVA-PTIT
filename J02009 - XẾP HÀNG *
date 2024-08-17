@@ -1,0 +1,40 @@
+package com.mycompany.java.ptit;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        ArrayList<int[]> arr = new ArrayList<>();
+        for(int i = 0; i < n; i++) {
+            int T = sc.nextInt();
+            int D = sc.nextInt();
+            arr.add(new int[] {T, D});
+        }
+        Collections.sort(arr, new Comparator<int[]>() {
+            @Override
+            public int compare(int[] o1, int[] o2) {
+                return o1[0] - o2[0];
+            }
+        });       
+        int current_time = 0;
+        for (int i = 0; i < n; i++) {
+            int[] customer = arr.get(i);
+            
+            int T = customer[0];
+            int D = customer[1];
+            
+            if (T >= current_time) {
+                current_time = T + D; 
+            } else {
+                current_time += D;
+            }
+        }
+        System.out.println(current_time);
+    }
+}
