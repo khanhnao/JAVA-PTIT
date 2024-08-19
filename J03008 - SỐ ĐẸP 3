@@ -1,0 +1,33 @@
+package com.mycompany.java.ptit;
+
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    public static boolean checkTN(String s){
+        StringBuilder sb = new StringBuilder(s);
+        return s.equals(sb.reverse().toString());
+    }
+    
+    public static boolean check(String s) {
+        for(int i = 0; i < s.length(); i++) {
+            if(s.charAt(i) != '2' && s.charAt(i) != '3' && s.charAt(i) != '5' && s.charAt(i) != '7') {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int tc = sc.nextInt(); sc.nextLine();
+        for(int g = 0; g < tc; g++) {
+            String x = sc.nextLine();
+            if(check(x) && checkTN(x)) {
+                System.out.println("YES");
+            } else {
+                System.out.println("NO");
+            }
+            //System.out.println(x.charAt(0) - '0');
+        }
+    }
+}
