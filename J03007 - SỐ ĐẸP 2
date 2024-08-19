@@ -1,0 +1,39 @@
+package com.mycompany.java.ptit;
+
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    public static boolean checkTN(String s){
+        StringBuilder sb = new StringBuilder(s);
+        return s.equals(sb.reverse().toString());
+    }
+    
+    public static boolean check(String s) {
+        if(s.charAt(0) == '8' && s.charAt(s.length() - 1) == '8'){
+            return true;
+        }
+        return false;
+    }
+    
+    public static boolean check2(String s){
+        int tong = 0;
+        for(int i = 0; i < s.length(); i++) {
+            tong = tong + (s.charAt(i) - '0');
+        }
+        return tong % 10 == 0;
+    }
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int tc = sc.nextInt(); sc.nextLine();
+        for(int g = 0; g < tc; g++) {
+            String x = sc.nextLine();
+            if(check(x) && checkTN(x) && check2(x)) {
+                System.out.println("YES");
+            } else {
+                System.out.println("NO");
+            }
+            //System.out.println(x.charAt(0) - '0');
+        }
+    }
+}
