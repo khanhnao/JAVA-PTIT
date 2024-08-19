@@ -1,0 +1,20 @@
+package com.mycompany.java.ptit;
+
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int tc = sc.nextInt(); sc.nextLine();
+        for(int g = 0; g < tc; g++) {
+            String x = sc.nextLine();
+            x = x.trim();
+            String[] words = x.split("\\s+");
+            for(String str : words){
+                System.out.print(str.substring(0, 1).toUpperCase() + str.substring(1).toLowerCase() + " ");
+            }
+            System.out.println("");
+        }
+    }
+}
