@@ -1,0 +1,31 @@
+package com.mycompany.java.ptit;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        ArrayList<Character> ans = new ArrayList<>();
+        for(int i = 0; i < s.length(); i++) {
+            if(ans.isEmpty()) {
+                ans.add(s.charAt(i));
+            } else {
+                if(ans.get(ans.size() - 1) == s.charAt(i)) {
+                    ans.remove(ans.size() - 1);
+                } else {
+                    ans.add(s.charAt(i));
+                }
+            }
+        }
+        if(ans.isEmpty()) {
+            System.out.println("Empty String");
+        } else {
+            for(int i = 0; i < ans.size(); i++) {
+                System.out.print(ans.get(i));
+            }
+        }
+    }
+}
