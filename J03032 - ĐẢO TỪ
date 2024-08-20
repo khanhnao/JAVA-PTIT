@@ -1,0 +1,21 @@
+package com.mycompany.java.ptit;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt(); sc.nextLine();
+        while(t-- > 0) {
+            String s = sc.nextLine();
+            String[] words = s.split(" ");
+            for(String str : words) {
+                StringBuilder sb = new StringBuilder(str);
+                System.out.print(sb.reverse() + " ");
+            }
+            System.out.println("");
+        }
+    }
+}
