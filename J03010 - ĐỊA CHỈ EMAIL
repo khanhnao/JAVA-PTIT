@@ -1,0 +1,33 @@
+package com.mycompany.java.ptit;
+
+import java.util.Map;
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeMap;
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int tc = sc.nextInt(); sc.nextLine();
+        Map<String, Integer> map = new TreeMap<>();
+        while(tc-- > 0){
+            String[] words = sc.nextLine().trim().toLowerCase().split("\\s++");
+            int n = words.length;
+            StringBuilder sb = new StringBuilder();
+            sb.append(words[n - 1]);
+            for(int i = 0; i < n - 1; i++) {
+                sb.append(words[i].charAt(0));
+            }
+            if(map.containsKey(sb.toString())) {
+                int ts = map.get(sb.toString());
+                ts++;
+                map.put(sb.toString(), ts);
+                sb.append(ts);
+            } else {
+                map.put(sb.toString(), 1);
+            }
+            System.out.println(sb + "@ptit.edu.vn");
+        }
+    }
+}
