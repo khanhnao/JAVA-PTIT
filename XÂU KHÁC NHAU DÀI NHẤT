@@ -1,0 +1,26 @@
+package com.mycompany.java.ptit;
+
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int tc = sc.nextInt();sc.nextLine();       
+        while (tc-- > 0) {
+            String A = sc.nextLine().trim();
+            String B = sc.nextLine().trim();
+            
+            if (A.equals(B)) {
+                System.out.println(-1);
+            } else if (B.contains(A)) {
+                System.out.println(B.length());
+            } else if (A.contains(B)) {
+                System.out.println(A.length());
+            } else {
+                System.out.println(Math.max(A.length(), B.length()));
+            }
+        }
+   }
+}
