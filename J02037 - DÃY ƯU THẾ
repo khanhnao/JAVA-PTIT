@@ -1,0 +1,28 @@
+package com.mycompany.java.ptit;
+
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt(); sc.nextLine();
+        while(t-- > 0) {
+            String s = sc.nextLine();
+            String[] num = s.split(" ");
+            int cntOdd = 0, cntEven = 0;
+            for (String num1 : num) {
+                if (Integer.parseInt(num1) % 2 == 0) {
+                    cntEven++;
+                } else {
+                    cntOdd++;
+                }
+            }
+            if((num.length % 2 == 0 && cntEven > cntOdd) || (num.length % 2 == 1 && cntOdd > cntEven)) {
+                System.out.println("YES");
+            } else {
+                System.out.println("NO");
+            }
+        }
+    }
+}
