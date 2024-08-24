@@ -1,0 +1,19 @@
+package com.mycompany.java.ptit;
+
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String a = sc.next();
+        String b = sc.next();
+
+        BigInteger tmp1 = new BigInteger(a);
+        BigInteger tmp2 = new BigInteger(b);
+
+        System.out.println(tmp1.add(tmp2));
+        
+    }
+}
