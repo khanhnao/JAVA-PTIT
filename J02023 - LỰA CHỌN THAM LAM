@@ -1,0 +1,45 @@
+package com.mycompany.java.ptit;
+
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int s = sc.nextInt();
+        if(s == 0 && n == 1) {
+            System.out.println("0 0");
+            return;
+        }
+        if(s > 9 * n || s == 0) {
+            System.out.println("-1 -1");
+            return;
+        }
+        
+        StringBuilder maxNum = new StringBuilder();
+        int remainSum = s;
+        
+        for(int i = 0; i < n; i++){
+            if(remainSum > 9) {
+                maxNum.append('9');
+                remainSum -= 9;
+            } else {
+                maxNum.append(remainSum);
+                remainSum = 0;
+            }
+        }
+        String tmp = maxNum.toString();
+        StringBuilder minNum = maxNum.reverse();
+        if(minNum.charAt(0) == '0'){
+            for(int i = 1; i < n; i++) {
+                if(minNum.charAt(i) > '0') {
+                    minNum.setCharAt(0, '1');
+                    minNum.setCharAt(i, (char)(minNum.charAt(i) - 1));
+                    break;
+                }
+            }
+        }
+        System.out.println(minNum.toString() + " " + tmp);
+    }
+}
