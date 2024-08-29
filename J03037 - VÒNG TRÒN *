@@ -1,0 +1,34 @@
+package com.mycompany.java.ptit;
+
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String data = sc.next();
+        int n = 26;
+        int[] firstPos = new int[n];
+        int[] secondPos = new int[n];
+        
+        for(int i = 0; i < data.length(); i++) {
+            int tmp = (int)(data.charAt(i) - 'A');
+            if(firstPos[tmp] == 0) {
+                firstPos[tmp] = i + 1;
+            } else {
+                secondPos[tmp] = i + 1;
+            }
+        }
+        
+        int ans = 0;
+        for(int i = 0; i < n; i++) {
+            for(int j = i + 1; j < n; j++) {
+                if(firstPos[i] < firstPos[j] && firstPos[j] < secondPos[i] && secondPos[i] < secondPos[j] || 
+                    firstPos[j] < firstPos[i] && firstPos[i] < secondPos[j] && secondPos[j] < secondPos[i] ) {
+                    ans++;
+                }
+            }
+        }
+        System.out.println(ans);
+    }
+}
