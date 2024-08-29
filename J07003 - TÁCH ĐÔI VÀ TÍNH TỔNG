@@ -1,0 +1,27 @@
+package com.mycompany.java.ptit;
+
+import java.math.BigInteger;
+import java.util.Scanner;
+import java.io.File;
+import java.io.FileNotFoundException;
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) throws FileNotFoundException {
+        Scanner sc = new Scanner(System.in);
+        File myObj = new File("DATA.in");
+        Scanner myReader = new Scanner(myObj);
+        String data = "";
+        while (myReader.hasNextLine()) {
+            data += myReader.nextLine();
+        }
+        myReader.close();
+        
+        while(data.length() != 1){
+            BigInteger tmp1 = new BigInteger(data.substring(0, data.length() / 2));
+            BigInteger tmp2 = new BigInteger(data.substring(data.length() / 2));
+            data = tmp1.add(tmp2).toString();
+            System.out.println(data);
+        }
+    }
+}
