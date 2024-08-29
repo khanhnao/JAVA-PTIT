@@ -1,0 +1,54 @@
+package com.mycompany.java.ptit;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    public static int tong(String s){
+        int sum = 0;
+        for(int i = 0; i < s.length(); i++) {
+            sum += s.charAt(i) - 65;
+        }
+        return sum % 26;
+    }
+    
+    public static String routate(String s, int step) {
+        String res = "";
+        for(int i = 0; i < s.length(); i++) {
+            if((int)(s.charAt(i)) + step <= 90) {
+                res += (char)((int)(s.charAt(i)) + step);
+            } else {
+                res += (char)((int)(s.charAt(i)) + step - 26);
+            }
+        }
+        return res;
+    }
+    
+    public static String merge(String s1, String s2) {
+        String ans = "";
+        for(int i = 0; i < s1.length(); i++) {
+            int tmp = (int)s1.charAt(i) + (int)s2.charAt(i) - 65;
+            if(tmp <= 90) {
+                ans += (char)tmp;
+            } else {
+                ans += (char)(tmp - 26);
+            }
+        }
+        return ans;
+    }
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while(t-- > 0) {
+            String s = sc.next();
+            String s1 = s.substring(0, s.length() / 2);
+            String s2 = s.substring(s.length() / 2);
+            
+            String tmp1 = routate(s1, tong(s1));
+            String tmp2 = routate(s2, tong(s2));
+            
+            System.out.println(merge(tmp1, tmp2));
+        }
+    }
+}
