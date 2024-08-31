@@ -1,0 +1,26 @@
+package com.mycompany.java.ptit;
+
+import java.util.Scanner;
+
+
+public class JAVAPTIT {
+    
+
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String input = sc.nextLine();
+
+        String[] parts = input.split("\\s+");
+        
+        double w = Double.parseDouble(parts[0]);
+        double h = Double.parseDouble(parts[1]);
+        String c = parts[2];
+
+        if (w <= 0 || h <= 0 || (int)w != w || (int)h != h) {
+            System.out.println("INVALID");
+        } else {
+            Rectangle rect = new Rectangle(w, h, c);
+            System.out.println((int)rect.findPerimeter() + " " + (int)rect.findArea() + " " + rect.getColor());
+        }
+    }  
+}
