@@ -1,0 +1,49 @@
+package com.mycompany.java.ptit;
+
+public class Rectangle {
+    private double width, height;
+    private String color;
+    
+    Rectangle() {
+        this.width = 1;
+        this.height = 1;
+    }
+    
+    Rectangle(double w, double h, String c) {
+        this.width = w;
+        this.height = h;
+        this.color = c.trim();
+    }
+
+    public double getWidth() {
+        return width;
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public String getColor() {
+        return color.substring(0, 1).toUpperCase() + this.color.substring(1).toLowerCase();
+    }
+
+    public void setWidth(double width) {
+        this.width = width;
+    }
+
+    public void setHeight(double height) {
+        this.height = height;
+    }
+
+    public void setColor(String color) {
+        this.color = color.trim();
+    }
+    
+    public double findArea() {
+        return this.height * this.width;
+    }
+    
+    public double findPerimeter() {
+        return 2 * (this.height + this.width);
+    }
+}
