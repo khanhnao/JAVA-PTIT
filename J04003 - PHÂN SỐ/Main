@@ -1,0 +1,12 @@
+package com.mycompany.java.ptit;
+
+import java.util.Scanner;
+
+public class JAVAPTIT {
+
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        PhanSo ip = new PhanSo(sc.nextLong(), sc.nextLong());
+        ip.toiGian();
+    }  
+}
