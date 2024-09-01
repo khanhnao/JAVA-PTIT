@@ -1,0 +1,33 @@
+
+package com.mycompany.java.ptit;
+
+public class GiaoVien {
+    private String id, name;
+    private int basicSalary;
+
+    public GiaoVien(String id, String name, int basicSalary) {
+        this.id = id;
+        this.name = name;
+        this.basicSalary = basicSalary;
+    }
+    
+    public int pension() {
+        if(id.charAt(1) == 'T') {
+            return 2000000;
+        } else if(id.charAt(1) == 'P') {
+            return 900000;
+        } else {
+            return 500000;
+        }
+    }
+    
+    public int income() {
+        int tmp = (int)(this.id.charAt(2) - '0') * 10 + (int)(this.id.charAt(3) - '0'); 
+        return this.pension() + tmp * this.basicSalary;
+    }
+    
+    public String toString() {
+        int tmp = (int)(this.id.charAt(2) - '0') * 10 + (int)(this.id.charAt(3) - '0'); 
+        return this.id + " " + this.name + " " + tmp + " " + this.pension() + " " + this.income();
+    }
+}
