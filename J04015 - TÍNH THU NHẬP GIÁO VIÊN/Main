@@ -1,0 +1,16 @@
+package com.mycompany.java.ptit;
+
+import java.util.Scanner;
+
+public class JAVAPTIT {
+
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String id = sc.next();
+        sc.nextLine();
+        String name = sc.nextLine();
+        int bs = sc.nextInt();
+        GiaoVien g = new GiaoVien(id, name, bs);
+        System.out.println(g);
+    }  
+}
