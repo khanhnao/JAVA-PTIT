@@ -1,0 +1,19 @@
+package com.mycompany.java.ptit;
+
+import java.util.Scanner;
+
+public class JAVAPTIT {
+
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String name = sc.nextLine();
+        String gen = sc.next();
+        String dob = sc.next();
+        sc.nextLine();
+        String dc = sc.nextLine();
+        String tax = sc.next();
+        String d = sc.next();
+        NhanVien n = new NhanVien(name, gen, dob, dc, tax, d);
+        System.out.println(n);
+    }  
+}
