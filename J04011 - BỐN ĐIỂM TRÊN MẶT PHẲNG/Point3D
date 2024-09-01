@@ -1,0 +1,38 @@
+
+package com.mycompany.java.ptit;
+
+public class Point3D {
+    private int x, y, z;
+
+    public Point3D(int x, int y, int z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+    
+    public static boolean check(Point3D A, Point3D B, Point3D C, Point3D D) {
+        // Tạo các vector AB, AC, AD
+        int xAB = B.x - A.x;
+        int yAB = B.y - A.y;
+        int zAB = B.z - A.z;
+        
+        int xAC = C.x - A.x;
+        int yAC = C.y - A.y;
+        int zAC = C.z - A.z;
+        
+        int xAD = D.x - A.x;
+        int yAD = D.y - A.y;
+        int zAD = D.z - A.z;
+        
+        // Tính tích có hướng AB x AC
+        int x1 = yAB * zAC - zAB * yAC;
+        int y1 = zAB * xAC - xAB * zAC;
+        int z1 = xAB * yAC - yAB * xAC;
+        
+        // Tính tích vô hướng với AD
+        int tichVoHuong = x1 * xAD + y1 * yAD + z1 * zAD;
+        
+        return tichVoHuong == 0;
+    }
+}
+
