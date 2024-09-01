@@ -1,0 +1,38 @@
+public class NhanVien2 {
+    private String id, name, pos;
+    private int basicSalary, numDay;
+
+    public NhanVien2(String id, String name, int basicSalary, int numDay, String pos) {
+        this.id = id;
+        this.name = name;
+        this.pos = pos;
+        this.basicSalary = basicSalary;
+        this.numDay = numDay;
+    }
+    
+    public int monthSalary() {
+        return this.basicSalary * this.numDay;
+    }
+    
+    public int bonus() {
+        if(this.numDay >= 25) {
+            return this.monthSalary() / 5;
+        } else if(this.numDay >= 22) {
+            return this.monthSalary() / 10;
+        } else {
+            return 0;
+        }
+    }
+    
+    public int pension() {
+        if(this.pos.equals("GD")) return 250000;
+        else if(this.pos.equals("PGD")) return 200000;
+        else if(this.pos.equals("TP")) return 180000;
+        else return 150000;
+    }
+    
+    public String toString() {
+        int income = this.monthSalary() + this.bonus() + this.pension();
+        return this.id + " " + this.name + " " + this.monthSalary() + " " + this.bonus() + " " + this.pension() + " " + income;
+    }
+}
