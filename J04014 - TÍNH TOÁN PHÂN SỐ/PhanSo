@@ -1,0 +1,44 @@
+package com.mycompany.java.ptit;
+
+public class PhanSo {
+    private long tuSo, mauSo;
+
+    public PhanSo(long tuSo, long mauSo) {
+        this.tuSo = tuSo;
+        this.mauSo = mauSo;
+        //toiGian();
+    }
+    
+    public long gcd(long a, long b) {
+        if (b == 0) {
+            return a;
+        }
+        return gcd(b, a % b);
+    }
+    
+    public void toiGian() {
+        long tmp = gcd(this.mauSo, this.tuSo);
+        this.tuSo = this.tuSo / tmp;
+        this.mauSo = this.mauSo / tmp;
+    }
+    
+    public PhanSo add(PhanSo other) {
+        long newTu = this.tuSo * other.mauSo + this.mauSo * other.tuSo;
+        long newMau = this.mauSo * other.mauSo;
+        return new PhanSo(newTu, newMau);
+    }
+    
+    public PhanSo binhPhuong(PhanSo other) {
+        PhanSo x = this.add(other);
+        x.toiGian();
+        return new PhanSo(x.tuSo * x.tuSo, x.mauSo * x.mauSo);
+    }
+    
+    public PhanSo tich(PhanSo p1, PhanSo p2) {
+        return new PhanSo(this.tuSo * p1.tuSo * p2.tuSo, this.mauSo * p1.mauSo * p2.mauSo);
+    }
+    
+    public String toString() {
+        return tuSo + "/" + mauSo;
+    }
+}
