@@ -1,0 +1,21 @@
+package com.mycompany.java.ptit;
+
+import java.util.Scanner;
+
+public class JAVAPTIT {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        while(a-- > 0) {
+            long x = sc.nextLong(), y = sc.nextLong(), z = sc.nextLong(), t = sc.nextLong();
+            PhanSo p1 = new PhanSo(x, y);
+            PhanSo p2 = new PhanSo(z, t);
+            PhanSo tmp1 = p1.binhPhuong(p2);
+            tmp1.toiGian();
+            PhanSo tmp2 = p1.tich(tmp1, p2);
+            tmp2.toiGian();
+            System.out.println(tmp1 + " " + tmp2);
+        }
+    }
+}
