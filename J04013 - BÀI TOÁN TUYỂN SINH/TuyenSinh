@@ -1,0 +1,51 @@
+
+package com.mycompany.java.ptit;
+
+public class TuyenSinh {
+    private String id, name;
+    private double p1, p2, p3;
+
+    public TuyenSinh(String id, String name, double p1, double p2, double p3) {
+        this.id = id;
+        this.name = name;
+        this.p1 = p1;
+        this.p2 = p2;
+        this.p3 = p3;
+    }
+    
+    public double totalPoint() {
+        return this.p1 * 2 + this.p2 + this.p3;
+    }
+    
+    public double bonusPoint() {
+        if(this.id.charAt(2) == '1') {
+            return 0.5;
+        } else if(this.id.charAt(2) == '2') {
+            return 1;
+        } else {
+            return 2.5;
+        }
+    }
+    public String solve(double x) {
+        String s = "";
+        if(x == (int)x){
+            s = String.format("%.0f", x);
+        } else {
+            s = String.format("%.1f", x);
+        }
+        return s;
+    }
+    
+    public String trangThai() {
+        if(this.bonusPoint() + this.totalPoint() >= 24) {
+            return "TRUNG TUYEN";
+        } else {
+            return "TRUOT";
+        }
+    }
+    
+    public String toString() {
+        return this.id + " " + this.name + " " + this.solve(this.bonusPoint()) + " " + this.solve(this.totalPoint()) + " " +this.trangThai();
+    }
+    
+}
