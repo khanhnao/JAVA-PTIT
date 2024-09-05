@@ -1,0 +1,37 @@
+package com.mycompany.java.ptit;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    public static int n, k;
+    public static int[] a = new int[100], x = new int[100];
+    
+    public static void Try(int i) {
+        for(int j = x[i - 1] + 1; j <= n - k + i; j++) {
+            x[i] = j;
+            if(i == k) {
+                for(int u = 1; u <= k; u++) {
+                    System.out.print(a[x[u]] + " ");
+                }
+                System.out.println("");
+            } else {
+                Try(i + 1);
+            }
+        }
+    }
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while(t-- > 0) {
+            n = sc.nextInt(); k = sc.nextInt();
+            x[0] = 0;
+            for(int i = 1; i <= n; i++) {
+                a[i] = sc.nextInt();
+            }
+            Arrays.sort(a, 1, n + 1);
+            Try(1);
+        }
+    }
+}
