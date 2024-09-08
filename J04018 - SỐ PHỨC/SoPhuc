@@ -1,0 +1,30 @@
+package com.mycompany.java.ptit;
+
+public class SoPhuc {
+    private int thuc, ao;
+
+    public SoPhuc(int thuc, int ao) {
+        this.thuc = thuc;
+        this.ao = ao;
+    }
+    
+    public SoPhuc add(SoPhuc other) {
+        int newThuc = this.thuc + other.thuc;
+        int newAo = this.ao + other.ao;
+        return new SoPhuc(newThuc, newAo);
+    }
+    
+    public SoPhuc mul(SoPhuc other) {
+        int newThuc = this.thuc * other.thuc - this.ao * other.ao;
+        int newAo = this.thuc * other.ao + this.ao * other.thuc;
+        return new SoPhuc(newThuc, newAo);
+    }
+    
+    public String toString() {
+        if(this.ao >= 0) {
+            return this.thuc + " + " + this.ao + "i"; 
+        } else {
+            return this.thuc + " - " + (this.ao * (-1)) + "i";
+        } 
+    }
+}
