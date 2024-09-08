@@ -1,0 +1,21 @@
+package com.mycompany.java.ptit;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int k = sc.nextInt();
+        while(k-- > 0) {
+            int x = sc.nextInt(), y = sc.nextInt(), z = sc.nextInt(), t = sc.nextInt();
+            SoPhuc a = new SoPhuc(x, y);
+            SoPhuc b = new SoPhuc(z, t);
+            SoPhuc c = (a.add(b)).mul(a);
+            SoPhuc d = (a.add(b)).mul(a.add(b));
+            System.out.println(c + ", " + d);
+        }
+    }
+}
