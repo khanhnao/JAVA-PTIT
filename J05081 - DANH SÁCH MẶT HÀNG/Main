@@ -1,0 +1,28 @@
+package com.mycompany.java.ptit;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        MatHang[] mh = new MatHang[t];
+        for(int i = 1; i <= t; i++) {
+            sc.nextLine();
+            mh[i - 1] = new MatHang(i, sc.nextLine(), sc.next(), sc.nextInt(), sc.nextInt());
+        }
+        Arrays.sort(mh, new Comparator<MatHang>() {
+            @Override
+            public int compare(MatHang o1, MatHang o2) {
+                return o2.getLoiNhuan() - o1.getLoiNhuan();
+            }
+            
+        });
+        for(MatHang m : mh) {
+            System.out.println(m);
+        }
+    }
+}
