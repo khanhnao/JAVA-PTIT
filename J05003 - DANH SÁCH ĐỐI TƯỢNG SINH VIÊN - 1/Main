@@ -1,0 +1,21 @@
+package com.mycompany.java.ptit;
+
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int k = sc.nextInt(); 
+        SinhVien[] sv = new SinhVien[k];
+        for(int i = 0; i < k; i++) {
+            sc.nextLine();
+            String name = sc.nextLine(); 
+            String className = sc.next(), dob = sc.next();
+            double gpa = sc.nextDouble();
+            
+            sv[i] = new SinhVien(i + 1, name, className, dob, gpa);
+            System.out.println(sv[i]);
+        }
+    }
+}
