@@ -1,0 +1,39 @@
+package com.mycompany.java.ptit;
+
+public class BangDiem {
+    private String id, name;
+    private double[] point;
+    
+    public BangDiem(int id, String name, double[] point) {
+        this.point = new double[10];
+        this.id = "HS" + String.format("%02d", id);
+        this.name = name;
+        for(int i = 0; i < 10; i++) {
+            this.point[i] = point[i];
+        }
+    }
+    public double dtb() {
+        //this.point = new double[10];
+        double dtb = this.point[0] + this.point[1];
+        for(int i = 0; i < 10; i++) {
+            dtb += this.point[i];
+        }
+        dtb /= 12;
+        dtb = (double) Math.round(dtb*10)/10;
+        return dtb;
+    }
+    
+    public String rank() {
+        
+        if(dtb() >= 9) return "XUAT SAC";
+        else if(dtb() >= 8) return "GIOI";
+        else if(dtb() >= 7) return "KHA";
+        else if(dtb() >= 5) return "TB";
+        else return "YEU";
+    }
+    
+    @Override
+    public String toString() {
+        return this.id + " " + this.name + " " + String.format("%.1f", this.dtb()) + " " + this.rank();
+    }
+}
