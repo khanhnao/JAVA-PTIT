@@ -1,0 +1,25 @@
+
+package com.mycompany.java.ptit;
+
+public class SV {
+    private String id, name, cn, email;
+
+    public SV(String id, String name, String cn, String email) {
+        this.id = id;
+        this.name = name;
+        this.cn = cn;
+        this.email = email;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getCn() {
+        return cn;
+    }
+    
+    public String toString() {
+        return this.id + " " + this.name + " " + this.cn + " " + this.email;
+    }
+}
