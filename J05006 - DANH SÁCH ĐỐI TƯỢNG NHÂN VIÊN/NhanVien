@@ -1,0 +1,21 @@
+
+package com.mycompany.java.ptit;
+
+public class NhanVien {
+    private String id, name, gender, dob, address, tax, date;
+
+    public NhanVien(int id, String name, String gender, String dob, String address, String tax, String date) {
+        this.id = String.format("%05d", id);
+        this.name = name;
+        this.gender = gender;
+        this.dob = dob;
+        this.address = address;
+        this.tax = tax;
+        this.date = date;
+    }
+    
+    public String toString() {
+        return id + " " + name + " " + gender + " " + dob + " " + address + " " + tax + " " + date;
+    }
+    
+}
