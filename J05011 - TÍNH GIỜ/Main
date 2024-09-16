@@ -1,0 +1,36 @@
+package com.mycompany.java.ptit;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(); sc.nextLine();
+        ThoiGianChoiGame[] arr = new ThoiGianChoiGame[n];
+        for(int i = 0; i < n; i++) {
+            String id = sc.nextLine();
+            String name = sc.nextLine();
+            String in = sc.nextLine();
+            String out = sc.nextLine();
+            arr[i] = new ThoiGianChoiGame(id, name, in, out);
+        }
+        
+        Arrays.sort(arr, new Comparator<ThoiGianChoiGame>(){
+            @Override
+            public int compare(ThoiGianChoiGame o1, ThoiGianChoiGame o2) {
+                if(o1.getGio() != o2.getGio()) {
+                    return o2.getGio() - o1.getGio();
+                } else {
+                    return o2.getPhut() - o1.getPhut();
+                }
+            }
+            
+        });
+        for(ThoiGianChoiGame x : arr) {
+            System.out.println(x);
+        }
+        sc.close();
+    }
+}
