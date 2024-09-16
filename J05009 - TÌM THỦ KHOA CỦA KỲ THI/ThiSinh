@@ -1,0 +1,28 @@
+package com.mycompany.java.ptit;
+
+public class ThiSinh {
+    private int id;
+    private String name, dob;
+    private double p1, p2, p3;
+
+    public ThiSinh(int id, String name, String dob, double p1, double p2, double p3) {
+        this.id = id;
+        this.name = name;
+        this.dob = dob;
+        this.p1 = p1;
+        this.p2 = p2;
+        this.p3 = p3;
+    }
+    
+    
+    
+    public double tongDiem() {
+        return p1 + p2 + p3;
+    }
+    
+    @Override
+    public String toString() {
+        return this.id + " " + this.name + " " + this.dob + " " + this.tongDiem();
+    }
+    
+}
