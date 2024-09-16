@@ -1,0 +1,30 @@
+package com.mycompany.java.ptit;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<SV> sv = new ArrayList<>();
+        while(sc.hasNext()){
+            sv.add(new SV(sc.nextLine(), sc.nextLine(), sc.nextLine(), sc.nextLine()));            
+        }
+        
+        
+        Collections.sort(sv, new Comparator<SV>(){
+            @Override
+            public int compare(SV o1, SV o2) {
+                return o1.getId().compareTo(o2.getId());
+            }
+        });
+        for(SV x : sv) {
+            System.out.println(x);
+        }
+    }
+}
+
