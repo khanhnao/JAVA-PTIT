@@ -1,0 +1,25 @@
+
+package com.mycompany.java.ptit;
+
+public class MatHang {
+    private int id;
+    private String name, gr;
+    private double giaMua, giaBan;
+
+    public MatHang(int id, String name, String gr, double giaMua, double giaBan) {
+        this.id = id;
+        this.name = name;
+        this.gr = gr;
+        this.giaMua = giaMua;
+        this.giaBan = giaBan;
+    }
+    
+    public double getLoiNhuan() {
+        return this.giaBan - this.giaMua;
+    }
+    
+    @Override
+    public String toString() {
+        return this.id + " " + this.name + " " + this.gr + " " + String.format("%.2f", this.getLoiNhuan());
+    }
+}
