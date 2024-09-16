@@ -1,0 +1,50 @@
+package com.mycompany.java.ptit;
+
+import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
+
+public class WordSet {
+    private TreeSet<String> s;
+    
+    public WordSet() {
+        s = new TreeSet<>();
+    }
+    
+    public WordSet(String str) {
+        s = new TreeSet<>();
+        String[] tmp = str.toLowerCase().split(" ");
+        for(String x : tmp) {
+            s.add(x);
+        }
+    }
+    
+    public WordSet union(WordSet other) {
+        WordSet res = new WordSet();
+        for(String x : this.s) {
+            res.s.add(x);
+        }
+        for(String x : other.s) {
+            res.s.add(x);
+        }
+        return res;
+    }
+    
+    public WordSet intersection(WordSet other) {
+        WordSet res = new WordSet();
+        for(String x : this.s) {
+            if(other.s.contains(x)) {
+                res.s.add(x);
+            }
+        }
+        return res;
+    }
+    
+    public String toString() {
+        String res = "";
+        for(String x : this.s) {
+            res += x + " ";
+        }
+        return res.trim();
+    }
+}
