@@ -1,0 +1,36 @@
+package com.mycompany.java.ptit;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(); sc.nextLine();
+        SV[] sv = new SV[n];
+        for(int i = 0; i < n; i++) {
+            String id = sc.nextLine();
+            String name = sc.nextLine();
+            String sn = sc.nextLine();
+            String email = sc.nextLine();
+            sv[i] = new SV(id, name, sn, email);
+        }
+        
+        Arrays.sort(sv, new Comparator<SV>(){
+            @Override
+            public int compare(SV o1, SV o2) {
+                if(!(o1.getCn().equals(o2.getCn()))) {
+                    return o1.getCn().compareTo(o2.getCn());
+                } else {
+                    return o1.getId().compareTo(o2.getId());
+                }
+            }
+        });
+        for(SV x : sv) {
+            System.out.println(x);
+        }
+    }
+}
+
