@@ -1,0 +1,38 @@
+package com.mycompany.java.ptit;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(); 
+        DiemTP[] arr = new DiemTP[n];
+        for(int i = 0; i < n; i++) {
+            sc.nextLine();
+            String msv = sc.nextLine();
+            String name = sc.nextLine();
+            String cn = sc.nextLine();
+            double p1 = sc.nextDouble(), p2 = sc.nextDouble(), p3 = sc.nextDouble();
+            arr[i] = new DiemTP(msv, name, cn, p1, p2, p3);
+        }
+        
+        Arrays.sort(arr, new Comparator<DiemTP>(){
+            @Override
+            public int compare(DiemTP o1, DiemTP o2) {
+                return o1.getMsv().compareTo(o2.getMsv());
+            }
+        });
+        int tt = 1;
+        for(DiemTP x : arr) {
+            System.out.print(tt + " ");
+            System.out.println(x);
+            tt++;
+        }
+    }
+}
