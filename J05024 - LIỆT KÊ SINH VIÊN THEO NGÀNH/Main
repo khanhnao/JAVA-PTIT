@@ -1,0 +1,43 @@
+package com.mycompany.java.ptit;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(); sc.nextLine();
+        SV[] sv = new SV[n];
+        for(int i = 0; i < n; i++) {
+            String id = sc.nextLine();
+            String name = sc.nextLine();
+            String cn = sc.nextLine();
+            String email = sc.nextLine();
+            sv[i] = new SV(id, name, cn, email);
+        }
+        
+        int q = sc.nextInt(); sc.nextLine();
+        for(int i = 0; i < q; i++) {
+            String cname = sc.nextLine().toUpperCase();
+            String[] words = cname.split(" ");
+            String tmp = "DC" + String.valueOf(words[0].charAt(0)) + String.valueOf(words[1].charAt(0));
+            System.out.println("DANH SACH SINH VIEN NGANH " + cname + ":");
+            for(int j = 0; j < n; j++) {
+                if(tmp.equals("DCCN") || tmp.equals("DCAT")) {
+                    if(sv[j].getCn().charAt(0) != 'E' && sv[j].getId().contains(tmp)) {
+                        System.out.println(sv[j]);
+                    }
+                } else {
+                    if(sv[j].getId().contains(tmp)) {
+                        System.out.println(sv[j]);
+                    }
+                }
+            }
+        }
+    }
+}
+
