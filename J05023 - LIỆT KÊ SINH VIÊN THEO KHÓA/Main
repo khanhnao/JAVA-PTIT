@@ -1,0 +1,35 @@
+package com.mycompany.java.ptit;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(); sc.nextLine();
+        SV[] sv = new SV[n];
+        for(int i = 0; i < n; i++) {
+            String id = sc.nextLine();
+            String name = sc.nextLine();
+            String cn = sc.nextLine();
+            String email = sc.nextLine();
+            sv[i] = new SV(id, name, cn, email);
+        }
+        
+        int q = sc.nextInt(); sc.nextLine();
+        for(int i = 0; i < q; i++) {
+            String cname = sc.nextLine();
+            System.out.println("DANH SACH SINH VIEN KHOA " + cname + ":");
+            for(int j = 0; j < n; j++) {
+                if(sv[j].getCn().substring(1, 3).equals(cname.substring(2))) {
+                    System.out.println(sv[j]);
+                }
+            }
+        }
+    }
+}
+
