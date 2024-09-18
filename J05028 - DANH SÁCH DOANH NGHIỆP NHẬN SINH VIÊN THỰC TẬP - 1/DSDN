@@ -1,0 +1,25 @@
+
+package com.mycompany.java.ptit;
+
+public class DSDN {
+    private String id, name;
+    private int sl;
+
+    public DSDN(String id, String name, int sl) {
+        this.id = id;
+        this.name = name;
+        this.sl = sl;
+    }
+
+    public String getId() {
+        return id;
+    }
+    
+    public int getSl() {
+        return sl;
+    }
+    
+    public String toString() {
+        return this.id + " " + this.name + " " + this.sl;
+    }
+}
