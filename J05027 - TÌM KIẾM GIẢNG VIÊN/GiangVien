@@ -1,0 +1,30 @@
+
+package com.mycompany.java.ptit;
+
+public class GiangVien {
+    private String id, name, sub;
+
+    public GiangVien(int id, String name, String sub) {
+        this.id = "GV" + String.format("%02d", id);
+        this.name = name;
+        this.sub = sub;
+    }
+    
+    public String getName() {
+        return this.name;
+    }
+    
+    public String getSub() {
+        String ans = "";
+        String[] words = this.sub.split(" ");
+        for (String word : words) {
+            ans += word.charAt(0);
+        }
+        return ans;
+    }
+    
+    @Override
+    public String toString() {
+        return this.id + " "  + this.name + " " +this.getSub();
+    }
+}
