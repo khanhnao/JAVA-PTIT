@@ -1,0 +1,29 @@
+
+package com.mycompany.java.ptit;
+
+public class DiemTP {
+    private String msv, name, cn;
+    private double p1, p2, p3;
+
+    public DiemTP(String msv, String name, String cn, double p1, double p2, double p3) {
+        this.msv = msv;
+        this.name = name;
+        this.cn = cn;
+        this.p1 = p1;
+        this.p2 = p2;
+        this.p3 = p3;
+    }
+
+    public String getMsv() {
+        return msv;
+    }
+
+    public String getName() {
+        return name;
+    }
+    
+    public String toString() {
+        return this.msv + " " + this.name + " " + this.cn + " " + 
+                String.format("%.1f",this.p1) + " " + String.format("%.1f",this.p2) + " " + String.format("%.1f",this.p3);
+    }
+}
