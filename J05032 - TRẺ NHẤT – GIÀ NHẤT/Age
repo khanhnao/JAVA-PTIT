@@ -1,0 +1,28 @@
+
+package com.mycompany.java.ptit;
+
+public class Age {
+    private String name;
+    private String dob;
+
+    public Age(String name, String dob) {
+        this.name = name;
+        this.dob = dob;
+    }
+    
+    public int getYear() {
+        return Integer.parseInt(dob.substring(6));
+    }
+    
+    public int getMonth() {
+        return Integer.parseInt(dob.substring(3, 5));
+    }
+    
+    public int getDay() {
+        return Integer.parseInt(dob.substring(0, 2));
+    }
+    
+    public String toString() {
+        return this.name;
+    }
+}
