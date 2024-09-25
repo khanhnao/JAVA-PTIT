@@ -1,0 +1,30 @@
+package com.mycompany.java.ptit;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(); 
+        int tongLuong = 0;
+        TienLuong[] arr = new TienLuong[n];
+        for(int i = 0; i < n; i++) {
+            sc.nextLine();
+            String ten = sc.nextLine();
+            int luongNgay = sc.nextInt();
+            int soNgay = sc.nextInt();
+            String cv = sc.next();
+            arr[i] = new TienLuong(i + 1, ten, luongNgay, soNgay, cv);
+            System.out.println(arr[i]);
+            tongLuong += arr[i].thucLinh();
+        }
+        System.out.println("Tong chi phi tien luong: " + tongLuong);
+    }
+}
