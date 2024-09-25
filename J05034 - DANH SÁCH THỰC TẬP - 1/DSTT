@@ -1,0 +1,29 @@
+
+package com.mycompany.java.ptit;
+
+public class DSTT {
+    private int stt;
+    private String id, name, cn, email, bn;
+
+    public DSTT(int stt, String id, String name, String cn, String email, String bn) {
+        this.stt = stt;
+        this.id = id;
+        this.name = name;
+        this.cn = cn;
+        this.email = email;
+        this.bn = bn;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getBn() {
+        return bn;
+    }
+    
+    @Override
+    public String toString() {
+        return this.stt + " " + this.id + " " + this.name + " " + this.cn + " " + this.email + " " + this.bn;
+    }
+}
