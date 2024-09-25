@@ -1,0 +1,42 @@
+package com.mycompany.java.ptit;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(); sc.nextLine();
+        DSTT[] arr = new DSTT[n];
+        for(int i = 0; i < n; i++) {
+            String id = sc.nextLine();
+            String name = sc.nextLine();
+            String cn = sc.nextLine();
+            String email = sc.nextLine();
+            String bn = sc.nextLine();
+            arr[i] = new DSTT(i + 1, id, name, cn , email, bn);
+        }
+        
+        Arrays.sort(arr, new Comparator<DSTT>(){
+            @Override
+            public int compare(DSTT o1, DSTT o2) {
+                return o1.getName().compareTo(o2.getName());
+            }
+        });
+        
+        int q = sc.nextInt(); sc.nextLine();
+        for(int i = 0; i < q; i++) {
+            String ip = sc.nextLine();
+            for(int j = 0; j < n; j++) {
+                if(arr[j].getBn().equals(ip)) {
+                    System.out.println(arr[j]);
+                }
+            }
+        }
+    }
+}
