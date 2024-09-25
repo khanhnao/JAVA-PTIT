@@ -1,0 +1,36 @@
+
+package com.mycompany.java.ptit;
+
+public class TapHoa {
+    private String maHang, name, dv;
+    private int buy, sl;
+
+    public TapHoa(int maHang, String name, String dv, int buy, int sl) {
+        this.maHang = "MH" + String.format("%02d", maHang);
+        this.name = name;
+        this.dv = dv;
+        this.buy = buy;
+        this.sl = sl;
+    }
+    
+    public int phiVanChuyen() {
+        return (int) Math.round((this.buy * this.sl) * 0.05);
+    }
+
+    public int thanhTien() {
+        return this.buy * this.sl + this.phiVanChuyen();
+    }
+
+    public int giaBan() {
+        return (int) Math.round(this.thanhTien() * 1.02);
+    }
+    
+    public int giaBanLe() {
+        return (int) Math.ceil((double)this.thanhTien() * 1.02 / this.sl / 100) * 100;
+    }
+    
+    public String toString() {
+        return this.maHang + " " + this.name + " " + this.dv + " " + this.phiVanChuyen() + " " + this.thanhTien() + " " + this.giaBanLe();
+    }
+}   
+
