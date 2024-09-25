@@ -1,0 +1,36 @@
+package com.mycompany.java.ptit;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(); 
+        TapHoa[] arr = new TapHoa[n];
+        for(int i = 0; i < n; i++) {
+            sc.nextLine();
+            String name = sc.nextLine();
+            String dv = sc.nextLine();
+            int gia = sc.nextInt();
+            int sl = sc.nextInt();
+            arr[i] = new TapHoa(i + 1, name, dv, gia, sl);
+        }
+        
+        Arrays.sort(arr, new Comparator<TapHoa>(){
+            @Override
+            public int compare(TapHoa o1, TapHoa o2) {
+                return o2.giaBanLe() - o1.giaBanLe();
+            }
+            
+        });
+        for(TapHoa x : arr) {
+            System.out.println(x);
+        }
+    }
+}
