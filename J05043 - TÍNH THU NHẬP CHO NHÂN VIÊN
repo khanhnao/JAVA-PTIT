@@ -1,0 +1,64 @@
+package com.mycompany.java.ptit;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+class ThuNhap {
+    private String id, name, pos;
+    private int basic_salary, days;
+
+    public ThuNhap(int id, String name, String pos, int basic_salary, int days) {
+        this.id = "NV" + String.format("%02d", id);
+        this.name = name;
+        this.pos = pos;
+        this.basic_salary = basic_salary;
+        this.days = days;
+    }
+    
+    public int getPhuCap() {
+        if(this.pos.equals("GD")) return 500;
+        else if(this.pos.equals("PGD")) return 400;
+        else if(this.pos.equals("TP")) return 300;
+        else if(this.pos.equals("KT")) return 250;
+        else return 100;
+    }
+    
+    public int getLuongChinh() {
+        return this.days * this.basic_salary + this.getPhuCap();
+    }
+    
+    public int getTamUng() {
+        if(getLuongChinh() * 2 / 3 < 25000) return (int) Math.round((double)getLuongChinh() * 2 / 3 / 1000) * 1000;
+        else return 25000;
+    }
+    
+    public int getLuong() {
+        return this.basic_salary * this.days;
+    }
+    
+    public String toString() {
+        return this.id + " " + this.name + " " + this.getPhuCap() + " " + this.getLuong() + " " + this.getTamUng() + " " + (this.getLuongChinh() - this.getTamUng());
+    }
+}
+
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        ThuNhap[] arr = new ThuNhap[n];
+        for(int i = 0; i < n; i++) {
+            sc.nextLine();
+            String name = sc.nextLine();
+            String pos = sc.nextLine();
+            int sl = sc.nextInt();
+            int days = sc.nextInt();
+            arr[i] = new ThuNhap(i + 1, name, pos, sl, days);
+            System.out.println(arr[i]);
+        }
+    }
+}
