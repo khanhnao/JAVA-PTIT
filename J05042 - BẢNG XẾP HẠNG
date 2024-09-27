@@ -1,0 +1,69 @@
+package com.mycompany.java.ptit;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+class bxh {
+    private String name;
+    private int ac, sm;
+
+    public bxh(String name, int ac, int sm) {
+        this.name = name;
+        this.ac = ac;
+        this.sm = sm;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAc() {
+        return ac;
+    }
+
+    public int getSm() {
+        return sm;
+    }
+    
+    public String toString() {
+        return this.name + " " + this.ac + " " + this.sm;
+    }
+}
+
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        bxh[] arr = new bxh[n];
+        for(int i = 0; i < n; i++) {
+            sc.nextLine();
+            String name = sc.nextLine();
+            int ac = sc.nextInt();
+            int sm = sc.nextInt();
+            arr[i] = new bxh(name, ac, sm);
+        }
+        Arrays.sort(arr, new Comparator<bxh>() {
+            @Override
+            public int compare(bxh o1, bxh o2) {
+                if(o1.getAc() != o2.getAc()) {
+                    return o2.getAc() - o1.getAc();
+                } else {
+                    if(o1.getSm() != o2.getSm()) {
+                        return o1.getSm() - o2.getSm();
+                    } else {
+                        return o1.getName().compareTo(o2.getName());
+                    }
+                }
+            }
+        });
+        
+        for(bxh x : arr) {
+            System.out.println(x);
+        }
+    }
+}
