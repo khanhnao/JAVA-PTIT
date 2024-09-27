@@ -1,0 +1,77 @@
+package com.mycompany.java.ptit;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Scanner;
+
+class TienLuong {
+    private String id, ten;
+    private int luongNgay, soNgayCong;
+    private String chucVu;
+
+    public TienLuong(int id, String ten, int luongNgay, int soNgayCong, String chucVu) {
+        this.id = "NV" + String.format("%02d", id);
+        this.ten = ten;
+        this.luongNgay = luongNgay;
+        this.soNgayCong = soNgayCong;
+        this.chucVu = chucVu;
+    }
+    
+    public int luongThang() {
+        return this.luongNgay * this.soNgayCong;
+    }
+    
+    public int thuong() {
+        if(this.soNgayCong >= 25) {
+            return (int) (this.luongThang() * 0.2);
+        } else if (this.soNgayCong >= 22) {
+            return (int) (this.luongThang() * 0.1);
+        } else {
+            return 0;
+        }
+    }
+    
+    public int phuCap() {
+        if(this.chucVu.equals("GD")) {
+            return 250000;
+        } else if(this.chucVu.equals("PGD")) {
+            return 200000;
+        } else if(this.chucVu.equals("TP")) {
+            return 180000;
+        } else {
+            return 150000;
+        }
+    }
+    
+    public int thucLinh() {
+        return this.luongThang() + this.thuong() + this.phuCap();
+    }
+    
+    public String toString() {
+        return this.id + " " + this.ten + " " + this.luongThang() + " " + this.thuong() + " " + this.phuCap() + " " + this.thucLinh();
+    }
+    
+}
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(); 
+        int tongLuong = 0;
+        TienLuong[] arr = new TienLuong[n];
+        for(int i = 0; i < n; i++) {
+            sc.nextLine();
+            String ten = sc.nextLine();
+            int luongNgay = sc.nextInt();
+            int soNgay = sc.nextInt();
+            String cv = sc.next();
+            arr[i] = new TienLuong(i + 1, ten, luongNgay, soNgay, cv);
+            System.out.println(arr[i]);
+            tongLuong += arr[i].thucLinh();
+        }
+        //System.out.println("Tong chi phi tien luong: " + tongLuong);
+    }
+}
