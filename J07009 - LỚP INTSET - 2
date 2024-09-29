@@ -1,0 +1,77 @@
+package com.mycompany.java.ptit;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
+import java.util.TreeSet;
+
+class IntSet {
+    private TreeSet<Integer> set;
+
+    public IntSet() {
+        set = new TreeSet<>();
+    }
+    
+    public IntSet(int[] a) {
+        set = new TreeSet<>();
+        for(int i = 0; i < a.length; i++) {
+            set.add(a[i]);
+        }
+    }
+    
+    public IntSet union(IntSet other) {
+        IntSet res = new IntSet();
+        for(int x : this.set) {
+            res.set.add(x);
+        }
+        
+        for(int x : other.set) {
+            res.set.add(x);
+        }
+        return res;
+    }
+    
+    public IntSet intersection(IntSet other) {
+        IntSet res = new IntSet();
+        for(int x: this.set) {
+            if(other.set.contains(x)) {
+                res.set.add(x);
+            }
+        }
+        return res;
+    }
+    
+    
+    public String toString(){
+        String res = "";
+        for(int x : this.set) {
+            res += x + " ";
+        }
+        return res.trim();
+    }
+}
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) throws IOException {
+        Scanner sc = new Scanner(new File("DATA.in"));
+        int n = sc.nextInt(), m = sc.nextInt(), a[] = new int[n], b[] = new int[m];
+        for(int i = 0; i<n; i++) a[i] = sc.nextInt();
+        for(int i = 0; i<m; i++) b[i] = sc.nextInt();
+        IntSet s1 = new IntSet(a);
+        IntSet s2 = new IntSet(b);
+        IntSet s3 = s1.intersection(s2);
+        System.out.println(s3);
+    }
+    public static void main8174997(String[] args) throws IOException {
+        Scanner sc = new Scanner(new File("DATA.in"));
+        int n = sc.nextInt(), m = sc.nextInt(), a[] = new int[n], b[] = new int[m];
+        for(int i = 0; i<n; i++) a[i] = sc.nextInt();
+        for(int i = 0; i<m; i++) b[i] = sc.nextInt();
+        IntSet s1 = new IntSet(a);
+        IntSet s2 = new IntSet(b);
+        IntSet s3 = s1.intersection(s2);
+        System.out.println(s3);
+    }
+}
