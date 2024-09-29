@@ -1,0 +1,70 @@
+package ktra;
+
+import java.util.HashMap;
+import java.util.Scanner;
+
+class NhapKho {
+    private String id, name;
+    private int sl, price;
+
+    public NhapKho(String name, int sl, int price) {
+        this.name = name;
+        this.sl = sl;
+        this.price = price;
+    }
+
+    // Lấy mã mặt hàng theo quy tắc
+    public String getId(HashMap<String, Integer> m) {
+        String[] words = this.name.toUpperCase().split(" ");
+        String res = words[0].charAt(0) + "" + words[1].charAt(0); // lấy hai ký tự đầu
+        // Tăng số thứ tự của mã hàng nếu đã xuất hiện trước đó
+        int count = m.getOrDefault(res, 0) + 1;
+        m.put(res, count);
+        return res + String.format("%02d", count); // định dạng số thứ tự có 2 chữ số
+    }
+
+    // Tính tiền chiết khấu
+    public int chietKhau() {
+        if (this.sl > 10) {
+            return (int) (this.price * this.sl * 0.05);
+        } else if (this.sl >= 8) {
+            return (int) (this.price * this.sl * 0.02);
+        } else if (this.sl >= 5) {
+            return (int) (this.price * this.sl * 0.01);
+        } else {
+            return 0;
+        }
+    }
+
+    // Tính thành tiền sau khi trừ chiết khấu
+    public int thanhTien() {
+        return this.price * this.sl - this.chietKhau();
+    }
+
+    // Xuất ra thông tin mặt hàng
+    public String toString(String id) {
+        return id + " " + this.name + " " + this.chietKhau() + " " + this.thanhTien();
+    }
+}
+
+public class Ktra {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(); // số lượng lô hàng
+        sc.nextLine(); // loại bỏ ký tự xuống dòng sau khi nhập số
+        NhapKho[] arr = new NhapKho[n];
+        HashMap<String, Integer> m = new HashMap<>(); // lưu mã và số thứ tự mặt hàng
+
+        for (int i = 0; i < n; i++) {
+            String name = sc.nextLine(); // tên mặt hàng
+            int sl = sc.nextInt(); // số lượng
+            int pr = sc.nextInt(); // đơn giá
+            sc.nextLine(); // loại bỏ ký tự xuống dòng
+
+            arr[i] = new NhapKho(name, sl, pr);
+            String id = arr[i].getId(m); // tạo mã hàng với số thứ tự dựa trên mã
+            System.out.println(arr[i].toString(id)); // in thông tin mặt hàng
+        }
+    }
+}
