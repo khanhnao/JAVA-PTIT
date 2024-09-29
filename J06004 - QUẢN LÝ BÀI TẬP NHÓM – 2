@@ -1,0 +1,59 @@
+package com.mycompany.java.ptit;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Scanner;
+class BTN {
+    private String id, name, num;
+    private String group;
+
+    public BTN(String id, String name, String num, String group) {
+        this.id = id;
+        this.name = name;
+        this.num = num;
+        this.group = group;
+    }
+
+    public int getGroup() {
+        return Integer.parseInt(group);
+    }
+
+    public String getId() {
+        return id;
+    }
+    
+    public String toString() {
+        return id + " " + name + " " + num + " " + group;
+    }
+}
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(), m = sc.nextInt(); sc.nextLine();
+        BTN[] arr = new BTN[n];
+        String[] task = new String[m];
+        for(int i = 0; i < n; i++) {
+            //sc.nextLine();
+            arr[i] = new BTN(sc.nextLine(), sc.nextLine(), sc.nextLine(),sc.nextLine());
+        }
+        for(int i = 0; i < m; i++) {
+            task[i] = sc.nextLine();
+        }
+        
+        Arrays.sort(arr, new Comparator<BTN>(){
+            @Override
+            public int compare(BTN o1, BTN o2) {
+                return o1.getId().compareTo(o2.getId());
+            }
+        });
+        
+        for(int i = 0; i < n; i++) {
+            System.out.print(arr[i] + " ");
+            System.out.println(task[arr[i].getGroup() - 1]);
+        }
+    }
+}
