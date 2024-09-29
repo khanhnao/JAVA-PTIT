@@ -1,0 +1,71 @@
+package com.mycompany.java.ptit;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Scanner;
+
+class HangHoa {
+    private String id;
+    private int in;
+
+    public HangHoa(String id, int in) {
+        this.id = id;
+        this.in = in;
+    }
+    
+    public int out() {
+        if(this.id.charAt(0) == 'A') {
+            return Math.round((float)(this.in * 0.6));
+        } else {
+            return Math.round((float)(this.in * 0.7));
+        }
+    }
+    
+    public int donGia() {
+        if(this.id.charAt(4) == 'Y') {
+            return 110000;
+        } else {
+            return 135000;
+        }
+    }
+    
+    public int tien() {
+        return this.out() * this.donGia();
+    }
+    
+    public int thue() {
+        if(this.id.charAt(0) == 'A' && this.id.charAt(4) == 'Y') {
+            return (int) (this.tien() * 0.08);
+        } else if(this.id.charAt(0) == 'A' && this.id.charAt(4) == 'N') {
+            return (int) (this.tien() * 0.11);
+        } else if(this.id.charAt(0) == 'B' && this.id.charAt(4) == 'Y') {
+            return (int) (this.tien() * 0.17);
+        } else {
+            return (int) (this.tien() * 0.22);
+        }
+    }
+    
+    public String toString() {
+        return this.id + " " + this.in + " " + this.out() + " " + this.donGia() + " " + this.tien() + " " + this.thue();
+    }
+}
+
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        HangHoa[] arr = new HangHoa[n];
+        for(int i = 0; i < n; i++) {
+            sc.nextLine();
+            String id = sc.nextLine();
+            int in = sc.nextInt();
+            arr[i] = new HangHoa(id, in);
+            System.out.println(arr[i]);
+        }
+    }
+}
