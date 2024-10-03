@@ -1,0 +1,61 @@
+package com.mycompany.java.ptit;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Scanner;
+
+class Ebill {
+    private String id, type;
+    private int old_num, new_num;
+
+    public Ebill(int id, String type, int old_num, int new_num) {
+        this.type = type;
+        this.id = "KH" + String.format("%02d", id);
+        this.old_num = old_num;
+        this.new_num = new_num;
+    }
+    
+    public int heSo() {
+        if(this.type.equals("KD")) return 3;
+        else if(this.type.equals("NN")) return 5;
+        else if(this.type.equals("TT")) return 4;
+        else return 2;
+    }
+    
+    public int thanhTien() {
+        return (this.new_num - this.old_num) * this.heSo() * 550;
+    }
+    
+    public int phuTroi() {
+        int tmp = this.new_num - this.old_num;
+        if(tmp < 50) return 0;
+        else if(tmp <= 100) return (int)(Math.ceil(this.thanhTien() * 0.35));
+        else return this.thanhTien();
+    }
+    
+    public int tongTien() {
+        return this.thanhTien() + this.phuTroi();
+    }
+    
+    public String toString() {
+        return this.id + " " + this.heSo() + " " + this.thanhTien() + " " + this.phuTroi() + " " + this.tongTien();
+    }
+}
+
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        Ebill[] arr = new Ebill[n];
+        for(int i = 0; i < n; i++) {
+            sc.nextLine();
+            String type = sc.nextLine();
+            int o = sc.nextInt();
+            int x = sc.nextInt();
+            arr[i] = new Ebill(i + 1, type, o, x);
+            System.out.println(arr[i]);
+        }
+    }
+}
