@@ -1,0 +1,66 @@
+package com.mycompany.java.ptit;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Scanner;
+
+class DonHang {
+    private String name, id;
+    private int price, quan;
+
+    public DonHang(String name, String id, int price, int quan) {
+        this.name = name;
+        this.id = id;
+        this.price = price;
+        this.quan = quan;
+    }
+    
+    public String stt() {
+        return this.id.substring(1, 4);
+    }
+    
+    public int discount() {
+        if(this.id.charAt(4) == '1') {
+            return (int) Math.ceil(this.price * this.quan * 0.5);
+        } else {
+            return (int) Math.ceil(this.price * this.quan * 0.3);
+        }
+    }
+    
+    public int thanhTien() {
+        return this.price * this.quan - this.discount();
+    }
+    
+    public String toString() {
+        return this.name + " " + this.id + " " + this.stt() + " " + this.discount() + " " + this.thanhTien();
+    }
+}
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        DonHang[] arr = new DonHang[n];
+        for(int i = 0; i < n; i++) {
+            sc.nextLine();
+            String name = sc.nextLine();
+            String id = sc.nextLine();
+            int pr = sc.nextInt();
+            int quan = sc.nextInt();
+            arr[i] = new DonHang(name, id, pr, quan);
+        }
+        
+        Arrays.sort(arr, new Comparator<DonHang>(){
+            @Override
+            public int compare(DonHang o1, DonHang o2) {
+                return o1.stt().compareTo(o2.stt());
+            }
+            
+        });
+        
+        for(DonHang x : arr) {
+            System.out.println(x);
+        }
+    }
+}
