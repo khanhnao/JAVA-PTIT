@@ -1,0 +1,31 @@
+package com.mycompany.java.ptit;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.TreeMap;
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args) { 
+        try {
+            Scanner sc = new Scanner(new File("VANBAN.in"));
+            TreeMap<String, Integer> m = new TreeMap<>();
+            while(sc.hasNext()) {
+                String s = sc.next().toLowerCase();
+                if(m.containsKey(s)) {
+                    int f = m.get(s);
+                    f++;
+                    m.put(s, f);
+                } else {
+                    m.put(s, 1);
+                }
+            }
+            for(String x : m.keySet()) {
+                System.out.println(x);
+            }
+        } catch (FileNotFoundException ex) {
+            
+        }
+    }
+}
