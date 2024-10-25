@@ -1,0 +1,85 @@
+package com.mycompany.java.ptit;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+
+class xhHS{
+    String id, name;
+    double point;
+    static int stt = 1;
+
+    public xhHS() {
+    }
+    
+    public xhHS(int id, String name, double point) {
+        this.id = "HS" + String.format("%02d", id);
+        this.name = name;
+        this.point = point;
+    }
+    
+    public void in(Scanner in) {
+        this.id = "HS" + String.format("%02d", stt);
+        this.name = in.nextLine();
+        this.point = Double.parseDouble(in.nextLine());
+        stt++;
+    }
+    
+    public String xepLoai() {
+        if(this.point < 5) return "Yeu";
+        else if(this.point < 7) return "Trung Binh";
+        else if(this.point < 9) return "Kha";
+        else return "Gioi";
+    }
+    
+    public String toString() {
+        return this.id + " " + this.name + " " + this.point + " " + this.xepLoai();
+    }
+}
+
+class sort_point implements Comparator<xhHS>{
+
+    @Override
+    public int compare(xhHS o1, xhHS o2) {
+        if(o1.point > o2.point) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
+    
+}
+
+public class JAVAPTIT {
+    
+    public static void main(String[] args){ 
+        Scanner sc = new Scanner(System.in);
+        ArrayList<xhHS> a = new ArrayList<>();
+        int n = Integer.parseInt(sc.nextLine());
+        for(int i = 0; i < n; i++) {
+            xhHS x = new xhHS();
+            x.in(sc);
+            a.add(x);
+        }
+        ArrayList<xhHS> tmp = (ArrayList<xhHS>) a.clone();
+        Collections.sort(tmp, new sort_point());
+        
+        Map m = new HashMap();
+        m.put(tmp.get(0).id, 1);
+        for(int i = 1; i < n; i++) {
+            if(tmp.get(i).point == tmp.get(i - 1).point) {
+                m.put(tmp.get(i).id, m.get(tmp.get(i - 1).id));
+            } else {
+                m.put(tmp.get(i).id, i + 1);
+            }
+        }
+        
+        for(xhHS z : a) {
+            System.out.println(z +" " + m.get(z.id));
+        }
+    }
+}
